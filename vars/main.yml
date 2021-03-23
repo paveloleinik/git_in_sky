@@ -1,0 +1,11 @@
+---
+packages:
+  - "nginx"
+  - "wget"
+  - "zsh"
+
+ssh_root_keys:
+  - "public_keys/root_key1.pub"
+  - "public_keys/root_key2.pub"
+
+site_directory: /var/www/git_in_sky

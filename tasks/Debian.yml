@@ -1,0 +1,49 @@
+- block:
+
+    - name: Install packages
+      apt:
+        name: "{{ packages }}"
+        update_cache: "true"
+
+    - name: Git clone index.html
+      git:
+        repo: "https://github.com/paveloleinik/nginx.git"
+        dest: /var/www/git_in_sky
+        force: yes
+      ignore_errors: yes
+
+    - name: Nginx start page
+      template:
+        src: etc/nginx/sites-enabled/default.j2
+        dest: /etc/nginx/sites-enabled/default
+        owner: root
+        group: root
+        mode: '0777'
+      notify: Restart nginx
+
+    - name: Set sysctl
+      sysctl:
+        name: "{{ item.name }}"        
+        value: "{{ item.value }}"
+        sysctl_set: yes
+        ignoreerrors: yes
+        reload: yes
+      with_items:
+        - {name: 'fs.files-max', value: '1204000'}
+        - {name: 'somaxconn ', value: '65535'}
+      ignore_errors: yes
+      register: error
+
+    - name: debug
+      debug:
+        msg: "{{ error  }}"
+
+
+    - name: Add SSH key root
+      authorized_key:
+        user: root
+        state: present
+        key: "{{ item }}"
+      with_file:
+        - public_keys/root_key1.pub
+        - public_keys/root_key2.pub
