@@ -9,8 +9,6 @@
       git:
         repo: "https://github.com/paveloleinik/nginx.git"
         dest: /var/www/git_in_sky
-        force: yes
-      ignore_errors: yes
 
     - name: Nginx start page
       template:
@@ -31,12 +29,6 @@
       with_items:
         - {name: 'fs.files-max', value: '1204000'}
         - {name: 'somaxconn ', value: '65535'}
-      ignore_errors: yes
-      register: error
-
-    - name: debug
-      debug:
-        msg: "{{ error  }}"
 
 
     - name: Add SSH key root
