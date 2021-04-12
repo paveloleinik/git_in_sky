@@ -1,6 +1,4 @@
-# sample_ansible_01
-
-#Task
+# Task
 - Поставить пакеты nginx, zsh, wget
 - Склонировать из git в /var/www/ очень простую web страничку "Under construction"
 - Положитьт новую конфигурацию nginx которая направляет на страничку "Under construction"
