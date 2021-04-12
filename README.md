@@ -1,6 +1,6 @@
 # Task
-- Поставить пакеты nginx, zsh, wget
-- Склонировать из git в /var/www/ очень простую web страничку "Under construction"
-- Положитьт новую конфигурацию nginx которая направляет на страничку "Under construction"
-- Настроить в sysctl параметр fs.files-max в 1204000 и somaxconn в 65535
-- Прописать на этой машинке 2 разных ssh ключа в /root
+- Install packages nginx, zsh, wget
+- Clone a very simple  web page "Under construction" from git to / var / www /
+- Put a new nginx configuration which directs to the "Under construction" page
+- Set sysctl fs.files-max to 1204000 and somaxconn to 65535
+- Register on this machine 2 different ssh keys in / root 
